@@ -1,12 +1,18 @@
 {
   "name": "koa-router",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "simple & light weight koa-router",
   "main": "index.js",
   "repository": "https://github.com/PassionPI/koa-router.git",
   "author": "PassionPI",
   "license": "MIT",
   "dependencies": {
-    "koa": "^2.11.0"
-  }
+    "@types/node": "^13.1.1",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "koa": "^2.11.0",
+    "typescript": "^3.7.4"
+  },
+  "scripts": {}
 }

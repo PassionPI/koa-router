@@ -1,13 +1,9 @@
-const PATH = require('path')
-
 module.exports = {
-  attribute: (prefix, path, method) => `${PATH.join(prefix, path)}*.*${method.toUpperCase()}`,
-
-  isString: str => {
+  isString(str: string): void {
     if (typeof str !== 'string') throw new Error(`${str} is not String!`)
   },
   
-  isFunction: fn => {
+  isFunction(fn: Function): void {
     if (typeof fn !== 'function') throw new Error(`${fn} is not Function!`)
   },
 }
