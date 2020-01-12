@@ -1,5 +1,4 @@
-
-module.exports = Object.freeze({
+module.exports = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'DEL'],
   
   isString(str: string): void {
@@ -9,4 +8,4 @@ module.exports = Object.freeze({
   isFunction(fn: Function): void {
     if (typeof fn !== 'function') throw new Error(`${fn} is not Function!`)
   },
-})
+}

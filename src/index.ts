@@ -52,4 +52,4 @@ class Router {
 
 }
 
-module.exports = Object.freeze(Router)
+module.exports = Router
