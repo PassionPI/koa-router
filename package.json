@@ -1,6 +1,6 @@
 {
   "name": "@passion_pi/koa-router",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "simple & light weight koa-router",
   "main": "index.js",
   "repository": "https://github.com/PassionPI/koa-router.git",
@@ -10,9 +10,6 @@
   "scripts": {},
   "devDependencies": {
     "@types/node": "^13.1.1",
-    "del": "^5.1.0",
-    "gulp": "^4.0.2",
-    "gulp-typescript": "^6.0.0-alpha.1",
     "koa": "^2.11.0",
     "typescript": "^3.7.4"
   }

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'DEL'],
   
   isString(str: string): void {

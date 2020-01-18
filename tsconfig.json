@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
     "outDir": "lib",
-    "noImplicitAny": true,
-    "module": "esNEXT",
-    "target": "es6",
+    "pretty": true,
+    "strict": true,
     "allowJs": true,
-  }
+    "module": "CommonJS",
+    "target": "esNEXT",
+    "experimentalDecorators": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

@@ -1,4 +1,4 @@
-module.exports = (tasks: Function[]) => (ctx: any, next: Function) => (
+export default (tasks: Function[]) => (ctx: any, next: Function) => (
   function dispatch(i: number) {
     const fn = i === tasks.length ? next : tasks[i]
     if (!fn) return Promise.resolve()

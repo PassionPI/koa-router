@@ -1,5 +1,6 @@
-const dispatchTask = require('./dispatch')
-const { isString, isFunction, methods } = require('./utils')
+import dispatchTask from './dispatch'
+import utils from './utils'
+const { isString, isFunction, methods } = utils
 
 class Router {
   routes: any;
@@ -52,4 +53,4 @@ class Router {
 
 }
 
-module.exports = Router
+export default Router
