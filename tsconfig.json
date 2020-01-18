@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
+    "lib": ["esNEXT"],
     "outDir": "lib",
     "pretty": true,
     "strict": true,
     "allowJs": true,
-    "module": "CommonJS",
+    "declaration": true,
+    "declarationDir": "lib/declare",
     "target": "esNEXT",
+    "module": "CommonJS",
     "experimentalDecorators": true,
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": ["./src/**/*"],
+  "exclude": []
 }

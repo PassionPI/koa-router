@@ -1,35 +1,20 @@
 import dispatchTask from './dispatch'
-import utils from './utils'
-const { isString, isFunction, methods } = utils
+import { isString, isFunction } from './utils'
+import { MiddleWareFn, Routes, KoaCtx } from './interface'
 
 class Router {
-  routes: any;
-  prefix: string;
-  notFoundTasks: Function[];
-
-  constructor(prefix: string) {
+  static readonly methods: string[] = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'DEL']
+  public constructor(prefix: string) {
     this.routes = {}
     this.prefix = prefix || ''
     this.notFoundTasks = []
-    this.middleware = this.middleware.bind(this)
-    methods.forEach((method: string) => this.routes[method] = {})
+    Router.methods.forEach((method: string) => this.routes[method] = {})
   }
+  private routes: Routes;
+  private prefix: string;
+  private notFoundTasks: MiddleWareFn[];
 
-  middleware(ctx: any, next: Function) {
-    const { path, method } = ctx
-    const tasks = this.routes[method][path]
-    Array.isArray(tasks)
-      ? dispatchTask(tasks)(ctx, next)
-      : dispatchTask(this.notFoundTasks)(ctx, next)
-  }
-
-  notFound = (fn: Function) => {
-    isFunction(fn)
-    this.notFoundTasks.push(fn)
-    return this
-  }
-
-  add = (method: string, path: string, fn: Function) => {
+  private add = (method: string, path: string, fn: MiddleWareFn): this => {
     isString(method), isString(path), isFunction(fn)
     const fullPath = `${this.prefix}${path}`
     const tasks = this.routes[method][fullPath]
@@ -39,17 +24,31 @@ class Router {
     return this
   }
 
-  all = (path: string, fn: Function) => {
-    methods.forEach((method: string) => this.add(method, path, fn), this)
+  public middleware = (ctx: KoaCtx, next: MiddleWareFn): void => {
+    const { path, method } = ctx
+    const tasks = this.routes[method][path]
+    Array.isArray(tasks)
+      ? dispatchTask(tasks)(ctx, next)
+      : dispatchTask(this.notFoundTasks)(ctx, next)
+  }
+
+  public notFound = (fn: MiddleWareFn): this => {
+    isFunction(fn)
+    this.notFoundTasks.push(fn)
     return this
   }
 
-  get    = (path: string, fn: Function) => this.add('GET', path, fn)
-  del    = (path: string, fn: Function) => this.add('DEL', path, fn)
-  put    = (path: string, fn: Function) => this.add('PUT', path, fn)
-  post   = (path: string, fn: Function) => this.add('POST', path, fn)
-  petch  = (path: string, fn: Function) => this.add('PETCH', path, fn)
-  delete = (path: string, fn: Function) => this.add('DELETE', path, fn)
+  public all = (path: string, fn: MiddleWareFn): this => {
+    Router.methods.forEach((method: string) => this.add(method, path, fn), this)
+    return this
+  }
+
+  public get    = (path: string, fn: MiddleWareFn): this => this.add('GET', path, fn)
+  public del    = (path: string, fn: MiddleWareFn): this => this.add('DEL', path, fn)
+  public put    = (path: string, fn: MiddleWareFn): this => this.add('PUT', path, fn)
+  public post   = (path: string, fn: MiddleWareFn): this => this.add('POST', path, fn)
+  public petch  = (path: string, fn: MiddleWareFn): this => this.add('PETCH', path, fn)
+  public delete = (path: string, fn: MiddleWareFn): this => this.add('DELETE', path, fn)
 
 }
 
