@@ -14,6 +14,8 @@ export function isKeyValArr(arr: [string, string][]): [string, string][] {
       isString(key), isString(val)
     })
     return arr
+  } else if (arr === undefined) {
+    return []
   } else {
     throw new Error(`${arr} is not Array!`)
   }

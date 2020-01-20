@@ -21,7 +21,9 @@ class Router {
     const { path, method } = ctx
     const tasks = this.routes[method][path]
     if (Array.isArray(tasks)) {
-      this.headers.forEach(([key, val]) => ctx.set(key, val))
+      if (Array.isArray(this.headers)) {
+        this.headers.forEach(([key, val]) => ctx.set(key, val))
+      }
       await dispatchTask(tasks)(ctx, next)
     } else {
       await next()
