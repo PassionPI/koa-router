@@ -1,8 +1,8 @@
-export interface MiddleWareFn {
-    (ctx: KoaCtx, next?: MiddleWareFn): void;
+export interface MiddlewareFn {
+    (ctx?: KoaCtx, next?: MiddlewareFn): Promise<void>;
 }
 export interface Tasks {
-    [url: string]: MiddleWareFn[];
+    [url: string]: MiddlewareFn[];
 }
 export interface Routes {
     [methodName: string]: Tasks;

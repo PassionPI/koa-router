@@ -1,3 +1,3 @@
-import { MiddleWareFn, KoaCtx } from './interface';
-declare const _default: (tasks: MiddleWareFn[]) => (ctx: KoaCtx, next: MiddleWareFn) => Promise<void>;
+import { MiddlewareFn } from './interface';
+declare const _default: (tasks: MiddlewareFn[]) => MiddlewareFn;
 export default _default;

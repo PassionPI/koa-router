@@ -1,19 +1,17 @@
-import { MiddleWareFn, KoaCtx } from './interface';
+import { MiddlewareFn, Routes, KoaCtx } from './interface';
 declare class Router {
     static readonly methods: string[];
     constructor(prefix: string);
-    private routes;
-    private prefix;
-    private notFoundTasks;
-    private add;
-    middleware: (ctx: KoaCtx, next: MiddleWareFn) => void;
-    notFound: (fn: MiddleWareFn) => this;
-    all: (path: string, fn: MiddleWareFn) => this;
-    get: (path: string, fn: MiddleWareFn) => this;
-    del: (path: string, fn: MiddleWareFn) => this;
-    put: (path: string, fn: MiddleWareFn) => this;
-    post: (path: string, fn: MiddleWareFn) => this;
-    petch: (path: string, fn: MiddleWareFn) => this;
-    delete: (path: string, fn: MiddleWareFn) => this;
+    routes: Routes;
+    prefix: string;
+    add: (method: string, path: string, fn: MiddlewareFn) => this;
+    middleware: (ctx: KoaCtx, next: MiddlewareFn) => Promise<void>;
+    all: (path: string, fn: MiddlewareFn) => this;
+    get: (path: string, fn: MiddlewareFn) => this;
+    del: (path: string, fn: MiddlewareFn) => this;
+    put: (path: string, fn: MiddlewareFn) => this;
+    post: (path: string, fn: MiddlewareFn) => this;
+    petch: (path: string, fn: MiddlewareFn) => this;
+    delete: (path: string, fn: MiddlewareFn) => this;
 }
 export default Router;

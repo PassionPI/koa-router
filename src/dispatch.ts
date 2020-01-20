@@ -1,8 +1,8 @@
-import { MiddleWareFn, KoaCtx } from './interface'
+import { MiddlewareFn, KoaCtx } from './interface'
 
-export default (tasks: MiddleWareFn[]) => (ctx: KoaCtx, next: MiddleWareFn) => (
+export default (tasks: MiddlewareFn[]): MiddlewareFn => (ctx?: KoaCtx, next?: MiddlewareFn): Promise<void> => (
   function dispatch(i: number): Promise<void> {
-    const fn: MiddleWareFn = i === tasks.length ? next : tasks[i]
+    const fn = i === tasks.length ? next : tasks[i]
     if (!fn) return Promise.resolve()
     try {
       return Promise.resolve(fn(ctx, () => dispatch(i + 1)))
