@@ -11,5 +11,16 @@ export interface Routes {
 export interface KoaCtx {
   path: string,
   method: string,
+  set(key: string, val: string): void,
   [props: string]: any
+}
+
+export interface Props {
+  prefix: string,
+  headers: [string, string][]
+}
+
+export const defaultProps = {
+  prefix: '',
+  headers: []
 }
