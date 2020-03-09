@@ -20,7 +20,7 @@ export interface Props {
   headers: [string, string][]
 }
 
-export const defaultProps = {
+export const defaultProps: Props = {
   prefix: '',
   headers: []
 }

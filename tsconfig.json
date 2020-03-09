@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "lib": ["esNEXT"],
-    "outDir": "lib",
+    "outDir": "./lib",
     "pretty": true,
     "strict": true,
     "allowJs": true,
     "declaration": true,
-    "declarationDir": "lib/declare",
+    "declarationDir": "./lib/declare",
     "target": "esNEXT",
     "module": "CommonJS",
     "experimentalDecorators": true,

@@ -10,9 +10,7 @@ export function isFunction(fn: Function): Function {
 
 export function isKeyValArr(arr: [string, string][]): [string, string][] {
   if (Array.isArray(arr)) {
-    arr.forEach(([key, val]) => {
-      isString(key), isString(val)
-    })
+    arr.forEach(([key, val]) => (isString(key), isString(val)))
     return arr
   } else if (arr === undefined) {
     return []

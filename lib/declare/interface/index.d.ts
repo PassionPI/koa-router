@@ -17,7 +17,4 @@ export interface Props {
     prefix: string;
     headers: [string, string][];
 }
-export declare const defaultProps: {
-    prefix: string;
-    headers: never[];
-};
+export declare const defaultProps: Props;
